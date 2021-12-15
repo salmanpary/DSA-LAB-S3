@@ -7,11 +7,10 @@ int size;
 int *s;
 
 };
-void create(struct Stack *st)
-{
-printf("Enter Size");
+void create(struct Stack *st){
+printf("enter the size of the stack");
 scanf("%d",&st->size);
-st->top=-1;
+int top=-1;
 st->s=(int *)malloc(st->size*sizeof(int));
 }
 void display(struct Stack st){
@@ -19,7 +18,6 @@ for(int i=st.top;i>=0;i--){
 printf("%d",st.s[i]);
 printf("  ");
 }
-printf("\n");
 
 }
 void push(struct Stack *st,int x){
@@ -50,9 +48,12 @@ int peek(struct Stack *st,int index){
 int x=-1;
 if(st->top-index+1<0){
 printf("invalid index");
+
+
+
 }
 else{
-x=st->s[st->top];
+x=st->s[st->top--];
 }
 return x;
 
@@ -82,13 +83,7 @@ push(&st,10);
 push(&st,20);
 push(&st,30);
 push(&st,40);
-
-display(st);
 printf("%d \n",peek(&st,2));
-int popped=pop(&st);
-printf("\n the popped element is %d\n ",popped);
-
-
 display(st);
 return 0;
 }
